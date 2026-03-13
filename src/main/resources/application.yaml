@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: MovieDate
+
+  jackson:
+    default-property-inclusion: non_null  # JSON 序列化时忽略 null 值
+
+# TMDB 配置
+tmdb:
+  api:
+    base-url: https://api.themoviedb.org/3
+    key: ${TMDB_API_KEY:your_api_key_here}  # v3 API Key
+    image-base-url: https://image.tmdb.org/t/p/w500
+    read-timeout: 10000
+    connect-timeout: 10000
+
+# 日志
+logging:
+  level:
+    org.fizzy.moviedate: DEBUG
+    org.springframework.web.client: DEBUG

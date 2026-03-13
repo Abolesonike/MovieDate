@@ -1,0 +1,29 @@
+###
+# 获取热门电影
+GET http://localhost:8080/api/movies/popular?page=1
+
+###
+# 搜索电影 - 搜索 "Avatar"
+GET http://localhost:8080/api/movies/search?query=Avatar&page=1
+
+###
+# 获取电影详情 (550 = Fight Club)
+GET http://localhost:8080/api/movies/550
+
+###
+# 获取正在上映的电影
+GET http://localhost:8080/api/movies/now-playing?page=1
+
+###
+# 获取即将上映的电影
+GET http://localhost:8080/api/movies/upcoming?page=1
+
+###
+# 获取评分最高的电影
+GET http://localhost:8080/api/movies/top-rated?page=1
+
+###
+# 搜索中文电影
+GET http://localhost:8080/api/movies/search?query=流浪地球&page=1
+
+###

@@ -1,0 +1,91 @@
+### 电影日记 API 测试
+
+# 基础 URL
+@baseUrl = http://localhost:8080/api/movie-diary
+@authUrl = http://localhost:8080/api/auth
+
+# 用户认证（先执行这个获取 userId）
+# @userId 从响应中复制
+
+### 用户注册
+POST {{authUrl}}/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "123456",
+  "nickname": "测试用户"
+}
+
+### 用户登录
+POST {{authUrl}}/login
+Content-Type: application/json
+
+{
+  "usernameOrEmail": "testuser",
+  "password": "123456"
+}
+
+### 获取当前用户信息
+GET {{authUrl}}/me
+X-User-Id: 1
+
+### ====================================
+
+### 1. 创建电影日记
+POST {{baseUrl}}
+Content-Type: application/json
+X-User-Id: 1
+
+{
+  "tmdbMovieId": 550,
+  "movieTitle": "搏击俱乐部",
+  "watchDate": "2026-03-13",
+  "rating": 9.0,
+  "review": "非常经典的电影，剧情反转令人震撼！",
+  "posterUrl": "https://image.tmdb.org/t/p/w500/poster.jpg",
+  "isFavorite": true
+}
+
+### 2. 查询所有电影日记（分页）
+GET {{baseUrl}}?page=1&size=10
+X-User-Id: 1
+
+### 3. 根据 ID 查询电影日记
+GET {{baseUrl}}/1
+X-User-Id: 1
+
+### 4. 更新电影日记
+PUT {{baseUrl}}/1
+Content-Type: application/json
+X-User-Id: 1
+
+{
+  "movieTitle": "搏击俱乐部",
+  "watchDate": "2026-03-13",
+  "rating": 9.5,
+  "review": "再次观看，依然震撼！剧情设计太精妙了。",
+  "posterUrl": "https://image.tmdb.org/t/p/w500/poster.jpg",
+  "isFavorite": true
+}
+
+### 5. 删除电影日记
+DELETE {{baseUrl}}/1
+X-User-Id: 1
+
+### 6. 根据 TMDB 电影 ID 查询
+GET {{baseUrl}}/tmdb/550
+X-User-Id: 1
+
+### 7. 根据日期范围查询
+GET {{baseUrl}}/date-range?startDate=2026-03-01&endDate=2026-03-31
+X-User-Id: 1
+
+### 8. 查询收藏的电影日记
+GET {{baseUrl}}/favorites
+X-User-Id: 1
+
+### 9. 统计电影总数
+GET {{baseUrl}}/count
+X-User-Id: 1

@@ -2,6 +2,13 @@ spring:
   application:
     name: MovieDate
 
+  # 数据源配置
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/movie_date?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: postgres
+    password: ${DB_PASSWORD:postgres}
+
   jackson:
     default-property-inclusion: non_null  # JSON 序列化时忽略 null 值
 

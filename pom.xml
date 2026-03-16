@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.3</version>
+        <version>3.2.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -24,18 +24,12 @@
         <!-- Web 支持 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webmvc</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-restclient-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webmvc-test</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -60,23 +54,11 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- RestClient -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-restclient</artifactId>
-        </dependency>
-
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-        </dependency>
-
-        <!-- HTTP Client (用于 RestClient) -->
-        <dependency>
-            <groupId>org.apache.httpcomponents.client5</groupId>
-            <artifactId>httpclient5</artifactId>
         </dependency>
 
         <!-- Validation (参数校验) -->
@@ -94,12 +76,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </path>
-                    </annotationProcessorPaths>
+                    <source>21</source>
+                    <target>21</target>
                 </configuration>
             </plugin>
             <plugin>

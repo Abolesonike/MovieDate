@@ -5,12 +5,20 @@ spring:
   # 数据源配置
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/movie_date?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    url: jdbc:postgresql://192.168.122.128:5432/movie_date?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
     username: postgres
-    password: ${DB_PASSWORD:postgres}
+    password: ${DB_PASSWORD:123456789}
 
   jackson:
     default-property-inclusion: non_null  # JSON 序列化时忽略 null 值
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: org.fizzy.moviedate.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 # TMDB 配置
 tmdb:
